@@ -1,18 +1,36 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @city.name %>
-</p>
-<%= cl_image_tag @city.photo.path, width: 300, height: 200, crop: :fill %>
-<br>
-
-<% @city.lost_animals.each do |animal| %>
-  <%= animal.name %>
-  <%= cl_image_tag animal.photos.first.path, width: 300, height: 200, crop: :fill %>
-  <%= link_to "View details", city_lost_animal_path(@city, animal) %>
-<% end %>
-
-<%= link_to "Lost an animal in #{@city.name}?", new_city_lost_animal_path(@city) %>
-
-<%= link_to 'Back', cities_path %>
+  <div class="row">
+    <div class="text-center margin-bottom">
+      <p>
+        <strong>Name:</strong>
+        <%= @city.name %>
+      </p>
+      <%= cl_image_tag @city.photo.path, width: 600, height: 200, crop: :fill %>
+    </div>
+  </div>
+  <div class="row">
+  <% @city.lost_animals.each do |animal| %>
+    <div class="col-md-6 text-center padded-little">
+    <div class="row">
+      <%= animal.name %>
+    </div>
+    <div class="row">
+      <%= link_to city_lost_animal_path(@city, animal) do %>
+        <%= cl_image_tag animal.photos.first.path, width: 300, height: 200, crop: :fill, radius: 20 %>
+      <% end %>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 padded-little text-center">
+    <%= link_to "Lost a pet in #{@city.name}?", new_city_lost_animal_path(@city), class: "action-button" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 padded-little text-center">
+    <%= link_to 'Back', cities_path, class: "back-button" %>
+  </div>
+</div>

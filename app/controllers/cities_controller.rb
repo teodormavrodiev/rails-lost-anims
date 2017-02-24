@@ -6,7 +6,17 @@ class CitiesController < ApplicationController
   def index
     #show home page - top three cities by animals, as well as option to select a city to filter
     #inside of the banner
-    @cities = City.all
+    if params[:name]
+      name = params[:name].strip.titleize
+      @city = City.where(name: name).first
+      if @city
+        redirect_to @city
+      else
+        redirect_to cities_path, notice: 'City not found.'
+      end
+    else
+      @cities = City.all
+    end
   end
 
   # GET /cities/1

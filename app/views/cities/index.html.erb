@@ -1,26 +1,29 @@
+<%= render "shared/banner" %>
 <p id="notice"><%= notice %></p>
+<div class="container">
+<h2>Cities</h2>
 
-<h1>Cities</h1>
+  <div class="wrapper">
+    <div class="row">
+      <% @cities.each do |city| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div class="col-xs-12 col-sm-4">
+        <!-- insert <div class="card"> -->
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path city.photo.path, height: 300, width: 400, crop: :fill %>');">
+          <div class="card-category"><%= city.name %></div>
+          <div class="card-description">
+          <p> Lost animals: <%= city.lost_animals.count %> </p>
+          </div>
+          <%= link_to "", city, class: "card-link" %>
+        </div>
+      </div>
 
-  <tbody>
-    <% @cities.each do |city| %>
-      <tr>
-        <%= cl_image_tag city.photo.path, width: 300, height: 200, crop: :fill %>
-        <td><%= city.name %></td>
-        <td><%= link_to 'Show', city %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
 
-<br>
+    </div>
+  </div>
 
-<%= link_to 'New City', new_city_path %>
+  <div class="padded text-center">
+    <%= link_to 'Add a City', new_city_path, class: "btn btn-lg btn-primary" %>
+  </div>
+</div>

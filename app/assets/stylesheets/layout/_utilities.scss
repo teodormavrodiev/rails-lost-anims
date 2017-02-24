@@ -10,6 +10,16 @@
   padding-bottom: 5em;
 }
 
+.padded-little {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+.margin-bottom {
+  margin-bottom: 5em;
+}
+.margin-top {
+  margin-bottom: 5em;
+}
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -22,4 +32,23 @@
 }
 .bg-dark-blue {
   background: #3b5998;
+}
+body {
+  background-color: #F1F4FF;
+}
+.back-button {
+    padding: 10px 30px;
+    background-color: gray;
+    border-radius: 3%;
+    color: white;
+  }
+.action-button {
+  background-color: #2073D4;
+  color: black;
+  padding: 15px 20px;
+  margin-top: 15px;
+  &:hover {
+    background-color:#144680;
+    color: black;
+  }
 }

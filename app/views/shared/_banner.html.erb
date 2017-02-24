@@ -1,0 +1,19 @@
+<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path "pets-banner.jpg" %>);">
+  <div class="banner-content text-center">
+    <h2>Look No Further</h2>
+    <h4>We will connect you with others in your area and help you find your pet.</h4>
+
+      <%= simple_form_for cities_path(3), method: :get do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :city, label: "", placeholder: "city", input_html: {name: 'name'} %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, value: "search" %>
+        </div>
+      <% end %>
+
+  </div>
+</div>

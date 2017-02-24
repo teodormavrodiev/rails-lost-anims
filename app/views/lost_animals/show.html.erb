@@ -1,34 +1,68 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @lost_animal.name %>
-</p>
+<div class="row">
+  <div class="text-center padded-little">
+    <% @lost_animal.photos.each do |photo| %>
+    <div class="col-md-4 margin-bottom">
+      <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill, radius: 30 %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="padded">
+    <div class="text-left">
+      <div class="col-md-2 col-md-offset-1">
+        <p>
+          <strong>Name:</strong>
+          <%= @lost_animal.name %>
+        </p>
+      </div>
+    </div>
+    <div class="text-left">
+      <div class="col-md-2">
+        <p>
+          <strong>Owner:</strong>
+          <%= @lost_animal.owner %>
+        </p>
+      </div>
+    </div>
+    <div class="text-left">
+      <div class="col-md-2">
+        <p>
+          <strong>Owner email:</strong>
+          <%= @lost_animal.owner_email %>
+        </p>
+      </div>
+    </div>
+  <div class="text-left">
+    <div class="col-md-4">
+      <p>
+        <strong>Description:</strong>
+        <%= @lost_animal.description %>
+      </p>
+    </div>
+  </div>
+  </div>
+</div>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @lost_animal.owner %>
-</p>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 padded">
+    <div class="content">
+    <%= render 'comment_form', city: @city, lost_animal: @lost_animal, comment: @comment %>
 
-<p>
-  <strong>Owner email:</strong>
-  <%= @lost_animal.owner_email %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @lost_animal.description %>
-</p>
-
-<% @lost_animal.photos.each do |photo| %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
-
-<%= render 'comment_form', city: @city, lost_animal: @lost_animal, comment: @comment %>
-
-<% @lost_animal.comments.order(id: :desc).each do |comment| %>
-  <p> <%= comment.description  %> </p>
-<% end %>
-
-
-<%= link_to 'Back', @lost_animal.city %>
+    <% @lost_animal.comments.order(id: :desc).each_with_index do |comment, index| %>
+      <div class="row">
+        <div class="padded-little">
+          <p> <%= index+1 %> : <%= comment.description %> </p>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 padded-little text-center">
+    <%= link_to 'Back', @lost_animal.city, class: "back-button" %>
+  </div>
+</div>

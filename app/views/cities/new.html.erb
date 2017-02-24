@@ -1,5 +1,17 @@
-<h1>New City</h1>
+<div class="container">
+  <div class="padded-little margin-bottom">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="content">
+          <h3 class="text-center">New City</h3>
 
-<%= render 'form', city: @city %>
+          <%= render 'form', city: @city %>
+          <div class="padded-little text-center">
+            <%= link_to 'Back', cities_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Back', cities_path %>
