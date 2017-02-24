@@ -5,6 +5,8 @@ class LostAnimalsController < ApplicationController
   # GET /lost_animals/1.json
   def show
     #show a specific animal with description and owner detials
+    @city = @lost_animal.city
+    @comment = Comment.new
   end
 
   # GET /lost_animals/new

@@ -24,4 +24,11 @@
   <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
 <% end %>
 
+<%= render 'comment_form', city: @city, lost_animal: @lost_animal, comment: @comment %>
+
+<% @lost_animal.comments.order(id: :desc).each do |comment| %>
+  <p> <%= comment.description  %> </p>
+<% end %>
+
+
 <%= link_to 'Back', @lost_animal.city %>
