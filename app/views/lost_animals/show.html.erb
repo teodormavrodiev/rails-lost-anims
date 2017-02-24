@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lost_animal.name %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @lost_animal.owner %>
+</p>
+
+<p>
+  <strong>Owner email:</strong>
+  <%= @lost_animal.owner_email %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lost_animal.description %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @lost_animal.city %>
+</p>
+
+<%= link_to 'Edit', edit_lost_animal_path(@lost_animal) %> |
+<%= link_to 'Back', lost_animals_path %>
