@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224114603) do
+ActiveRecord::Schema.define(version: 20170224141955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20170224114603) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "lost_animal_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["lost_animal_id"], name: "index_comments_on_lost_animal_id", using: :btree
+  end
+
   create_table "lost_animals", force: :cascade do |t|
     t.string   "name"
     t.string   "owner"
@@ -47,5 +55,6 @@ ActiveRecord::Schema.define(version: 20170224114603) do
     t.index ["city_id"], name: "index_lost_animals_on_city_id", using: :btree
   end
 
+  add_foreign_key "comments", "lost_animals"
   add_foreign_key "lost_animals", "cities"
 end

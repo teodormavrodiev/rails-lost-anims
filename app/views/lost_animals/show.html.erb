@@ -20,10 +20,8 @@
   <%= @lost_animal.description %>
 </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @lost_animal.city %>
-</p>
+<% @lost_animal.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
 
-<%= link_to 'Edit', edit_lost_animal_path(@lost_animal) %> |
-<%= link_to 'Back', lost_animals_path %>
+<%= link_to 'Back', @lost_animal.city %>

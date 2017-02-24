@@ -4,6 +4,15 @@
   <strong>Name:</strong>
   <%= @city.name %>
 </p>
+<%= cl_image_tag @city.photo.path, width: 300, height: 200, crop: :fill %>
+<br>
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
+<% @city.lost_animals.each do |animal| %>
+  <%= animal.name %>
+  <%= cl_image_tag animal.photos.first.path, width: 300, height: 200, crop: :fill %>
+  <%= link_to "View details", city_lost_animal_path(@city, animal) %>
+<% end %>
+
+<%= link_to "Lost an animal in #{@city.name}?", new_city_lost_animal_path(@city) %>
+
 <%= link_to 'Back', cities_path %>

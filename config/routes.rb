@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "cities#index"
   resources :cities, only: [:index, :show, :new, :create] do
-    resources :lost_animals, except: [:destroy, :index]
+    resources :lost_animals, except: [:destroy, :index, :update, :edit]
   end
 
   mount Attachinary::Engine => "/attachinary"

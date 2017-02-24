@@ -6,6 +6,7 @@ class CitiesController < ApplicationController
   def index
     #show home page - top three cities by animals, as well as option to select a city to filter
     #inside of the banner
+    @cities = City.all
   end
 
   # GET /cities/1
